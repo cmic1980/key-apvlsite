@@ -84,13 +84,11 @@ const routes = [
             }
         ]
     },
-    { path: '*', redirect: '/404', hidden: true }
+    {path: '*', redirect: '/404', hidden: true}
 ].map(route => {
     route.path = rootPath + route.path;
     return route;
 });
 
-// 404 页
-routes.push({path: '*', component: E404, name: '404'});
 
 export default routes;
