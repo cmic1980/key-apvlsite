@@ -1,6 +1,6 @@
 <template>
     <div class="app-container">
-        <FormList :is-show-mas-deny="true" :is-show-mas-approve="true" :list="formList"/>
+        <FormList :is-show-mas-deny="true" :is-show-mas-approve="true" :list="formList" :isShowApprove="false" :isShowDeny="false"/>
     </div>
 </template>
 
@@ -12,6 +12,7 @@
         name: 'Layout',
         components: {
             FormList
+
         },
         data() {
             return {}

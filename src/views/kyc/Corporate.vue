@@ -20,27 +20,39 @@
                 </el-collapse-item>
             </el-collapse>
         </div>
-        <div style="margin-top: 10px;">
-            <el-radio v-model="action" label="1">Approve</el-radio>
-            <el-radio v-model="action" label="2" style="margin-left: 8px">Deny</el-radio>
+        <div v-if="form.status<4">
+            <div style="margin-top: 10px;">
+                <el-radio v-model="action" label="1">Approve</el-radio>
+                <el-radio v-model="action" label="2" style="margin-left: 8px">Deny</el-radio>
+            </div>
+            <div v-show="action==2" style="margin-top: 10px; margin-left: 4px; font-size: 10pt; font-style: italic;">
+                The following comments will be sent to applicant by email and shown in the top of the KYC register page.
+            </div>
+            <div v-show="action==2" style="margin-top: 10px;">
+                <el-input
+                    :rows="8"
+                    v-model="comments"
+                    type="textarea"
+                    placeholder="Please type your comments"/>
+            </div>
+            <div class="cmd">
+                <el-button size="mini" type="primary" @click="submit">Submit</el-button>
+            </div>
         </div>
-        <div v-show="action==2" style="margin-top: 10px; margin-left: 4px; font-size: 10pt; font-style: italic;">
-            The following comments will be sent to applicant by email and shown in the top of the KYC register page.
+
+        <div class="cmd" v-if="form.status==4">
+            <el-button size="mini" type="primary" @click="done">Done</el-button>
         </div>
-        <div v-show="action==2" style="margin-top: 10px;">
-            <el-input
-                :rows="8"
-                v-model="comments"
-                type="textarea"
-                placeholder="Please type your comments"/>
-        </div>
-        <div class="cmd">
-            <el-button size="mini" type="primary" @click="submit">Submit</el-button>
+
+        <div class="cmd" v-if="form.status==5">
+            <el-button size="mini" type="primary" @click="purge">Purge</el-button>
         </div>
     </div>
 </template>
 
 <script>
+    import {mapState, mapActions} from 'vuex'
+
     export default {
         data() {
             return {
@@ -63,7 +75,20 @@
                     this.$store.dispatch('form/deny', this.formId)
                 }
 
+                this.$router.go(-1)
+            }, done() {
+                this.$store.dispatch('form/done', this.formId)
+                this.$router.go(-1)
+            }, purge() {
+                this.$store.dispatch('form/purge', this.formId)
+                this.$router.go(-1)
             }
-        }
+        }, created() {
+            this.$store.dispatch('form/getFormById', this.formId)
+        }, computed: mapState({
+            form: function (state) {
+                return state.form.item
+            }
+        })
     }
 </script>
