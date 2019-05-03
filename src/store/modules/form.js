@@ -15,12 +15,10 @@ const actions = {
             commit('setProductList', formList)
         },status)
     },approve({commit}, formId) {
-        debugger
         form.approve(data => {
 
         },formId)
     },deny({commit}, formId) {
-        debugger
         form.deny(formList => {
 
         },formId)
