@@ -37,15 +37,19 @@
             </div>
             <div class="cmd">
                 <el-button size="mini" type="primary" @click="submit">Submit</el-button>
+
+                <el-button size="mini" type="primary" @click="cancel">Cancel</el-button>
             </div>
         </div>
 
         <div class="cmd" v-if="form.status==4">
             <el-button size="mini" type="primary" @click="done">Done</el-button>
+            <el-button size="mini" type="primary" @click="cancel">Cancel</el-button>
         </div>
 
         <div class="cmd" v-if="form.status==5">
             <el-button size="mini" type="primary" @click="purge">Purge</el-button>
+            <el-button size="mini" type="primary" @click="cancel">Cancel</el-button>
         </div>
     </div>
 </template>
@@ -81,6 +85,8 @@
                 this.$router.go(-1)
             }, purge() {
                 this.$store.dispatch('form/purge', this.formId)
+                this.$router.go(-1)
+            },cancel(){
                 this.$router.go(-1)
             }
         }, created() {

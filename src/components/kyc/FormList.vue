@@ -68,22 +68,22 @@
                 <el-button
                     v-show="isShowApprove"
                     type="primary"
-                    size="mini">Approve
+                    size="mini" @click="viewForm(scope.row)">Approve
                 </el-button>
                 <el-button
                     v-show="isShowDeny"
                     size="mini"
-                    type="danger">Deny
+                    type="danger" @click="viewForm(scope.row)">Deny
                 </el-button>
                 <el-button
                     v-show="isShowMasApprove && isShowSendToMas(scope.row)==false"
                     type="primary"
-                    size="mini">MAS Approve
+                    size="mini" @click="viewForm(scope.row)">MAS Approve
                 </el-button>
                 <el-button
                     v-show="isShowMasDeny && isShowSendToMas(scope.row)==false"
                     size="mini"
-                    type="danger">MAS Deny
+                    type="danger" @click="viewForm(scope.row)">MAS Deny
                 </el-button>
                 <el-button
                     v-show="isShowSendToMas(scope.row)"
