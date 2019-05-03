@@ -25,7 +25,6 @@
                 'sidebar'
             ]),
             routes() {
-                debugger
                 return this.$router.options.routes
             },
             variables() {

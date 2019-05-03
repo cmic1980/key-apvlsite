@@ -1,43 +1,28 @@
 <template>
-  <div class="app-container">
-    <FormList :is-show-purge="true" :list="list"/>
-  </div>
+    <div class="app-container">
+        <FormList :is-show-purge="true" :list="formList"/>
+    </div>
 </template>
 
 <script>
-import FormList from '@/components/kyc/FormList.vue'
+    import FormList from '@/components/kyc/FormList.vue'
+    import {mapState, mapActions} from 'vuex'
 
-export default {
-  name: 'Layout',
-  components: {
-    FormList
-  },
-  data() {
-    return {
-      list: [{
-        id: '1',
-        name: 'CITIC Securities Company Limited',
-        type: 'Corporate',
-        actionTime: '2019-04-07 14:09:19',
-        status: 'Refused',
-        email: 'swhysc@swhysc.com'
-      }, {
-        id: '2',
-        name: 'The Hongkong and Shanghai Banking Corporation Limited',
-        type: 'Corporate',
-        actionTime: '2019-04-11 11:59:12',
-        status: 'Refused (Need Supplementary Materials)',
-        email: 'whb@gmail.com'
-      }, {
-        id: '3',
-        name: 'Jack Ma',
-        type: 'Individual',
-        actionTime: '2019-04-11 11:59:12',
-        status: 'Refused',
-        email: 'jack.ma@alibaba.com'
-      }]
+    export default {
+        name: 'Layout',
+        components: {
+            FormList
+        },
+        created() {
+            this.$store.dispatch('form/getFormListByStatus', 5)
+        }, data() {
+            return {}
+        }, computed: mapState({
+            formList: function (state) {
+                return state.form.all
+            }
+        })
+
     }
-  }
-}
 </script>
 

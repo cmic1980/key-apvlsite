@@ -1,42 +1,28 @@
 <template>
-  <div class="app-container">
-    <FormList :is-show-deny="true" :is-show-approve="true" :list="list" :is-show-submit-time="true" :is-show-approved-time="false"/>
-  </div>
+    <div class="app-container">
+        <FormList :is-show-deny="true" :is-show-approve="true" :list="formList" :is-show-submit-time="true"
+                  :is-show-approved-time="false"/>
+    </div>
 </template>
 
 <script>
-import FormList from '@/components/kyc/FormList.vue'
+    import FormList from '@/components/kyc/FormList.vue'
+    import {mapState, mapActions} from 'vuex'
 
-export default {
-  name: 'Layout',
-  components: {
-    FormList
-  }, data() {
-    return {
-      list: [{
-        id: '1',
-        name: 'CITIC Securities Company Limited',
-        type: 'Corporate',
-        actionTime: '2019-04-07 14:09:19',
-        status: 'Pending',
-        email: 'swhysc@swhysc.com'
-      }, {
-        id: '2',
-        name: 'The Hongkong and Shanghai Banking Corporation Limited',
-        type: 'Corporate',
-        actionTime: '2019-04-11 11:59:12',
-        status: 'Pending',
-        email: 'whb@gmail.com'
-      }, {
-        id: '3',
-        name: 'Jack Ma',
-        type: 'Individual',
-        actionTime: '2019-04-11 11:59:12',
-        status: 'Resubmit',
-        email: 'jack.ma@alibaba.com'
-      }]
+    export default {
+        name: 'Layout',
+        components: {
+            FormList
+        }, created() {
+            this.$store.dispatch('form/getFormListByStatus', 1)
+        }, data() {
+            return {
+            }
+        }, computed: mapState({
+            formList: function (state) {
+                return state.form.all
+            }
+        })
     }
-  }
-}
 </script>
 

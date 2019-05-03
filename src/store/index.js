@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import products from './modules/products'
 import cart from './modules/cart'
 import app from './modules/app'
-
+import form from './modules/form'
 
 import { currency } from '@/utils/currency'
 Vue.filter('currency', currency)
@@ -16,6 +16,7 @@ export default new Vuex.Store({
     modules: {
         cart,
         products,
-        app
+        app,
+        form
     }
 })
