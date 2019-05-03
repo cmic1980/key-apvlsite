@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <FormList :is-show-renew="true"/>
+    <FormList :is-show-renew="true" :list="formList"/>
   </div>
 </template>
 
