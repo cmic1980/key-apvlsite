@@ -13,7 +13,7 @@
         components: {
             FormList
         }, created() {
-            this.$store.dispatch('form/getFormListByStatus', 3)
+            this.$store.dispatch('form/getFormListByStatus', 4)
         }, data() {
             return {}
         }, computed: mapState({

@@ -16,7 +16,7 @@
         data() {
             return {}
         }, created() {
-            this.$store.dispatch('form/getFormListByStatus', 2)
+            this.$store.dispatch('form/getFormListByStatus', 3)
         }, computed: mapState({
             formList: function (state) {
                 return state.form.all

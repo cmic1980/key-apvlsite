@@ -23,7 +23,7 @@
       </template>
     </el-table-column>
     <el-table-column
-      prop="type"
+      prop="typeName"
       label="Type"
       width="100px"/>
     <el-table-column
@@ -33,13 +33,13 @@
     />
 
     <el-table-column
-      prop="status"
+      prop="statusName"
       width="200px"
       label="Status"/>
 
     <el-table-column
       v-if="isShowSubmitTime"
-      prop="actionTime"
+      prop="submitTime"
       label="Submit time"/>
 
     <el-table-column

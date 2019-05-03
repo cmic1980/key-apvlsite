@@ -14,7 +14,7 @@
         components: {
             FormList
         }, created() {
-            this.$store.dispatch('form/getFormListByStatus', 1)
+            this.$store.dispatch('form/getFormListByStatus', 2)
         }, data() {
             return {
             }
